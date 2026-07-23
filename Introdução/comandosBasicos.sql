@@ -62,3 +62,9 @@ LIMIT n
 SELECT *
 FROM sales.funnel
 LIMIT 10
+
+SELECT coluna1, coluna2
+FROM schema_1.tabela_1
+ORDER BY coluna_1
+LIMIT n OFFSET m; -- x -> linhas para pular até começar a contagem (paginação)
+                        -- LIMIT quantidade OFFSET linhas_para_pular;

@@ -57,4 +57,10 @@ FROM sales.customers
 WHERE first_name ILIKE 'ana%' -- Ignora se as letras sao maiúsculas/minúsculas
 
 -- ISNULL
+SELECT * 
+FROM temp_tables.regions
+WHERE population IS NULL
 
+SELECT * 
+FROM temp_tables.regions
+WHERE population IS NOT NULL -- pega os valores nao nulos
