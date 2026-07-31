@@ -6,10 +6,17 @@ FROM sales.customers
 SELECT * FROM temp_tables.customers_age -- acessando a tabela que criei
 
 -- Usando CREATE
-CREATE TABLE temp_tables.profissoes(
+CREATE TABLE IF NOT EXISTS temp_tables.profissoes(
 	professional_status VARCHAR,
 	status_profissional VARCHAR
 )
+
+CREATE TABLE IF NOT EXISTS mytable (
+    column DataType TableConstraint DEFAULT default_value,
+    another_column DataType TableConstraint DEFAULT default_value,
+    …
+);
+
 
 -- Inserindo Dados nas Tabelas (INSERT INTO)
 INSERT INTO temp_table.profissoes(

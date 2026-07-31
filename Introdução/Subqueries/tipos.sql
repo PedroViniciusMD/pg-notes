@@ -29,6 +29,18 @@ FROM (
 WHERE professional_status = 'clt';
 
 
+WITH numero_visitas as ( -- mais um exemplo com with
+	SELECT customer_id, COUNT(visit_page_date) as visitas
+	FROM sales.funnel
+	GROUP BY customer_id
+)
+
+SELECT (cus.first_name || ' ' || cus.last_name) as nome, numero_visitas.visitas
+FROM sales.funnel as fun LEFT JOIN sales.customers as cus
+ON fun.customer_id = cus.customer_id
+	LEFT JOIN numero_visitas 
+		ON fun.customer_id = numero_visitas.customer_id
+
 -- subquery no from (usar with)
 SELECT professional_status, AVG(idade) AS idade_media
 FROM (SELECT professional_status, (current_date - birth_date) / 365 as idade
