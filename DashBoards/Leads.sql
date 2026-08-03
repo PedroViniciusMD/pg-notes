@@ -47,3 +47,13 @@ SELECT
 FROM sales.customers
 GROUP BY "faixa salarial", ordem 
 ORDER BY "ordem" DESC
+
+-- Query 4
+SELECT
+    EXTRACT(YEAR FROM CURRENT_DATE)::INT - pro.model_year::INT AS idade_veiculo,
+    COUNT(*) AS visitas
+FROM sales.funnel AS fun
+LEFT JOIN sales.products AS pro
+    ON fun.product_id = pro.product_id
+GROUP BY 1
+ORDER BY idade_veiculo DESC
